@@ -1,0 +1,9 @@
+tokens pra implementar:
+int[]
+int OK
+boolean
+&& || 
+& | (tem q ver se tem)
+true false
+length
+this new
