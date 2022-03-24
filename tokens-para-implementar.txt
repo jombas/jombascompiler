@@ -1,9 +1,16 @@
 tokens pra implementar:
-int[]
-int OK
-boolean
-&& || 
-& | (tem q ver se tem)
-true false
-length
+int[] e int[valor]
+& | || (tem q ver se tem)
+operador * para headers de métodos e classes
+
+colocados como comentario: 
+
 this new
+
+eram dessa lista mas ja implementados:
+
+int OK
+length OK
+&&
+true false 
+boolean

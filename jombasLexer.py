@@ -3,16 +3,19 @@ import lex
 
 class CalcLexer(lex.Lexer): #lembrar de tirar!!!!!!!!
     # Set of token names.   This is always required
-    tokens = { NUMBER, ID, NUMBERVEC,WHILE, IF, ELSE, INT, LENGHT
-               PLUS, MINUS, TIMES, DIVIDE, ASSIGN,
-               EQ, LT, LE, GT, GE, NE,
+    tokens = { NUMBER, ID, NUMBERVEC,WHILE, IF, ELSE, INT, LENGTH, BOOLEAN
+               PLUS, MINUS, TIMES, LT, ASSIGN, AND
                PUBLIC, STATIC, VOID, MAIN,
                CLASS, EXTENDS, RETURN
-               
+               TRUE, FALSE
+               #THIS, NEW
+               #(operador * em headers, para nao confundir com o TIMES)
+            # Operadores que não tem no mini java:
+               # EQ, LE, GT, GE, NE, DIVIDE,
                }
 
 
-    literals = { '(', ')', '{', '}', ';' ,'.', '?','*',',','!'} #perguntar do ponto para o lincon
+    literals = { '(', ')', '{', '}', ';' ,'.', '?',',','!'} #perguntar do ponto para o lincon
 
     # String containing ignored characters
     ignore = ' \t'
@@ -21,14 +24,17 @@ class CalcLexer(lex.Lexer): #lembrar de tirar!!!!!!!!
     PLUS    = r'\+'
     MINUS   = r'-'
     TIMES   = r'\*'
-    DIVIDE  = r'/'
-    EQ      = r'=='
+    #DIVIDE  = r'/'
+    #EQ      = r'=='
     ASSIGN  = r'='
-    LE      = r'<='
+    #LE      = r'<='
     LT      = r'<'
-    GE      = r'>='
-    GT      = r'>'
-    NE      = r'!='
+    #GE      = r'>='
+    #GT      = r'>'
+    #NE      = r'!='
+    AND     = r'&&'
+    
+    #operador * no header de classes e métodos deve ser implementado como expressão regular, talvez como r')\*'
     
 
     @_(r'\d+')
@@ -36,12 +42,23 @@ class CalcLexer(lex.Lexer): #lembrar de tirar!!!!!!!!
         t.value = int(t.value)
         return t
 
+    # adicionar um meio de não ser considerado um id e sim um boolean
+    @_(r'true|false') 
+    def BOOL(self, t):
+        t.value = bool(t.value)
+        return t
 
-    NUMBERVEC = r''
+    
+    #implementar o int[] e int[valor]
+    NUMBERVEC = r'' 
+
+
+
     # Identifiers and keywords
     ID = r'[a-zA-Z_][a-zA-Z0-9_]*'
 
-    ID['lenght'] = LENGHT
+    ID['boolean'] = BOOLEAN
+    ID['length'] = LENGTH
     ID['int'] = INT
     ID['if'] = IF
     ID['else'] = ELSE
