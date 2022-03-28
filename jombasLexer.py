@@ -3,11 +3,11 @@ import lex
 
 class CalcLexer(lex.Lexer): #lembrar de tirar!!!!!!!!
     # Set of token names.   This is always required
-    tokens = { NUMBER, ID, NUMBERVEC,WHILE, IF, ELSE, INT, LENGTH, BOOLEAN
-               PLUS, MINUS, TIMES, LT, ASSIGN, AND
-               PUBLIC, STATIC, VOID, MAIN,
-               CLASS, EXTENDS, RETURN
-               TRUE, FALSE
+    tokens = { NUMBER, ID, NUMBERVEC,WHILE, IF, ELSE, INT, LENGTH, BOOLEAN,
+               PLUS, MINUS, TIMES, LT, ASSIGN, AND,
+               PUBLIC, STATIC, VOID, MAIN, PRINT,
+               CLASS, EXTENDS, RETURN,
+               BOOL
                #THIS, NEW
                #(operador * em headers, para nao confundir com o TIMES)
             # Operadores que não tem no mini java:
@@ -15,10 +15,12 @@ class CalcLexer(lex.Lexer): #lembrar de tirar!!!!!!!!
                }
 
 
-    literals = { '(', ')', '{', '}', ';' ,'.', '?',',','!'} #perguntar do ponto para o lincon
+    literals = { '(', ')', '{', '}', ';' ,'.', '?',',','!'} #perguntar do ponto e o * para o lincon
 
     # String containing ignored characters
-    ignore = ' \t'
+    ignore  = ' \t'
+
+    PRINT   = r'System.out.println' 
 
     # Regular expression rules for tokens
     PLUS    = r'\+'
