@@ -1,11 +1,8 @@
 tokens pra implementar:
-int[] e int[valor]
-& | || (tem q ver se tem)
-operador * para headers de métodos e classes
 
 colocados como comentario: 
 
-this new
+
 
 eram dessa lista mas ja implementados:
 
@@ -14,3 +11,4 @@ length OK
 &&
 true false 
 boolean
+this new
