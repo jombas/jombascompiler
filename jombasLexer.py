@@ -7,14 +7,14 @@ class CalcLexer(lex.Lexer): #lembrar de tirar!!!!!!!!
                PLUS, MINUS, TIMES, LT, ASSIGN, AND,
                PUBLIC, STATIC, VOID, MAIN, PRINT,
                CLASS, EXTENDS, RETURN,
-               TRUE, FALSE
+               TRUE, FALSE,
                THIS, NEW
             # Operadores que não tem no mini java:
                # EQ, LE, GT, GE, NE, DIVIDE,
                }
 
 
-    literals = { '(', ')', '{', '}', ';' ,'.',',','!'} #perguntar do ponto e o * para o lincon
+    literals = { '(', ')', '{', '}', ';' ,'.',',','!','[',']'} #perguntar do ponto e o * para o lincon
 
     # String containing ignored characters
     ignore  = ' \t'
@@ -75,12 +75,24 @@ class CalcLexer(lex.Lexer): #lembrar de tirar!!!!!!!!
 
 if __name__ == '__main__':
     data = '''
-# Counting
-x = 0;
-while (x < 10) {
-    System.out.println x:
-    x = x + 1;
+class Factorial{
+    public static void main(String[] a){
+	System.out.println(new Fac().ComputeFac(10));
+    }
 }
+
+class Fac {
+
+    public int ComputeFac(int num){
+	int num_aux ;
+	if (num < 1)
+	    num_aux = 1 ;
+	else 
+	    num_aux = num * (this.ComputeFac(num-1)) ;
+	return num_aux ;
+    }
+
+  }
 '''
     lexer = CalcLexer()
     for tok in lexer.tokenize(data):
